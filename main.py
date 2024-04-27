@@ -1,8 +1,28 @@
-#pip install requests
-import requests
-from tkinter import *
+import tkinter as tk
 
-def cadastrar_clientes():
+def ler_contador():
+    try:
+        with open("contador.txt", "r") as file:
+            return int(file.read())
+    except FileNotFoundError:
+        return 1
+
+def escrever_contador(valor):
+    with open("contador.txt", "w") as file:
+        file.write(str(valor))
+
+def gerar_codigo():
+    global contador_clientes
+    while True:
+        if contador_clientes not in codigos_utilizados:
+            codigo = contador_clientes
+            contador_clientes += 1
+            return codigo
+        else:
+            contador_clientes += 1
+
+def cadastrar_cliente():
+    global contador_clientes
     nome = nomeentry.get()
     sobrenome = sobrenomeentry.get()
     idade = idadeentry.get()
@@ -12,63 +32,81 @@ def cadastrar_clientes():
     numerotelefone = numerotelefoneentry.get()
     email = emailentry.get()
 
-    print("Nome:", nome)
-    print("Sobrenome:", sobrenome)
-    print("Idade:", idade)
-    print("Gênero:", genero)
-    print("Endereço:", endereco)
-    print("Número:", numero)
-    print("Número de telefone:", numerotelefone)
-    print("Endereço de e-mail:", email)
+    codigo_cliente = gerar_codigo()
+    codigos_utilizados.add(codigo_cliente)
 
-janela = Tk()
+    with open("clientes.txt", "a") as file:
+        file.write(f"Código: {codigo_cliente}\n")
+        file.write(f"Nome: {nome}\n")
+        file.write(f"Sobrenome: {sobrenome}\n")
+        file.write(f"Idade: {idade}\n")
+        file.write(f"Gênero: {genero}\n")
+        file.write(f"Endereço: {endereco}\n")
+        file.write(f"Número: {numero}\n")
+        file.write(f"Número de telefone: {numerotelefone}\n")
+        file.write(f"Endereço de e-mail: {email}\n")
+        file.write("\n") 
+
+    nomeentry.delete(0, tk.END)
+    sobrenomeentry.delete(0, tk.END)
+    idadeentry.delete(0, tk.END)
+    generoentry.delete(0, tk.END)
+    enderecoentry.delete(0, tk.END)
+    numeroentry.delete(0, tk.END)
+    numerotelefoneentry.delete(0, tk.END)
+    emailentry.delete(0, tk.END)
+
+    escrever_contador(contador_clientes)
+
+janela = tk.Tk()
 janela.title("Cadastro de Clientes")
-titulo = Label(janela, text="Cadastro de Clientes")
+titulo = tk.Label(janela, text="Cadastro de Clientes")
 titulo.grid(column=0, row=0, padx=10, pady=10)
 
-nome = Label(janela, text="Nome")
+nome = tk.Label(janela, text="Nome")
 nome.grid(column=0, row=1, padx=10, pady=10)
-nomeentry = Entry(janela)
+nomeentry = tk.Entry(janela)
 nomeentry.grid(column=0, row=2, padx=10, pady=10)
 
-sobrenome = Label(janela, text="Sobrenome")
+sobrenome = tk.Label(janela, text="Sobrenome")
 sobrenome.grid(column=1, row=1)
-sobrenomeentry = Entry(janela)
+sobrenomeentry = tk.Entry(janela)
 sobrenomeentry.grid(column=1, row=2)
 
-idade = Label(janela, text="Idade")
+idade = tk.Label(janela, text="Idade")
 idade.grid(column=0, row=3, padx=10, pady=10)
-idadeentry = Entry(janela)
+idadeentry = tk.Entry(janela)
 idadeentry.grid(column=0, row=4, padx=10, pady=10)
 
-genero = Label(janela, text="Gênero")
+genero = tk.Label(janela, text="Gênero")
 genero.grid(column=1, row=3)
-generoentry = Entry(janela)
+generoentry = tk.Entry(janela)
 generoentry.grid(column=1, row=4)
 
-endereco = Label(janela, text="Endereço")
+endereco = tk.Label(janela, text="Endereço")
 endereco.grid(column=0, row=5, padx=10, pady=10)
-enderecoentry = Entry(janela)
+enderecoentry = tk.Entry(janela)
 enderecoentry.grid(column=0, row=6, padx=10, pady=10)
 
-numero = Label(janela, text="Número")
+numero = tk.Label(janela, text="Número")
 numero.grid(column=1, row=5)
-numeroentry = Entry(janela)
+numeroentry = tk.Entry(janela)
 numeroentry.grid(column=1, row=6)
 
-numerotelefone = Label(janela, text="Número de telefone")
+numerotelefone = tk.Label(janela, text="Número de telefone")
 numerotelefone.grid(column=0, row=7, padx=10, pady=10)
-numerotelefoneentry = Entry(janela)
+numerotelefoneentry = tk.Entry(janela)
 numerotelefoneentry.grid(column=0, row=8, padx=10, pady=10)
 
-email = Label(janela, text="Endereço de e-mail")
+email = tk.Label(janela, text="Endereço de e-mail")
 email.grid(column=0, row=9, padx=10, pady=10)
-emailentry = Entry(janela)
+emailentry = tk.Entry(janela)
 emailentry.grid(column=0, row=10, padx=10, pady=10)
 
-botao = Button(janela, text="Cadastrar", command=cadastrar_clientes)
+botao = tk.Button(janela, text="Cadastrar", command=cadastrar_cliente)
 botao.grid(column=0, row=11, padx=10, pady=10)
+
+contador_clientes = ler_contador()
+codigos_utilizados = set()
+
 janela.mainloop()
-
-
-
