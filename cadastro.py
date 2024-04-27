@@ -1,4 +1,4 @@
-import tkinter as tk
+from tkinter import *
 
 def ler_contador():
     try:
@@ -31,7 +31,6 @@ def cadastrar_cliente():
     numero = numeroentry.get()
     numerotelefone = numerotelefoneentry.get()
     email = emailentry.get()
-
     codigo_cliente = gerar_codigo()
     codigos_utilizados.add(codigo_cliente)
 
@@ -47,66 +46,66 @@ def cadastrar_cliente():
         file.write(f"Endereço de e-mail: {email}\n")
         file.write("\n") 
 
-    nomeentry.delete(0, tk.END)
-    sobrenomeentry.delete(0, tk.END)
-    idadeentry.delete(0, tk.END)
-    generoentry.delete(0, tk.END)
-    enderecoentry.delete(0, tk.END)
-    numeroentry.delete(0, tk.END)
-    numerotelefoneentry.delete(0, tk.END)
-    emailentry.delete(0, tk.END)
+    nomeentry.delete(0, END)
+    sobrenomeentry.delete(0, END)
+    idadeentry.delete(0, END)
+    generoentry.delete(0, END)
+    enderecoentry.delete(0, END)
+    numeroentry.delete(0, END)
+    numerotelefoneentry.delete(0, END)
+    emailentry.delete(0, END)
 
     escrever_contador(contador_clientes)
 
-janela = tk.Tk()
-janela.title("Cadastro de Clientes")
-titulo = tk.Label(janela, text="Cadastro de Clientes")
+janela2 = Tk()
+janela2.title("Cadastro de Clientes")
+titulo = Label(janela2, text="Cadastro de Clientes")
 titulo.grid(column=0, row=0, padx=10, pady=10)
 
-nome = tk.Label(janela, text="Nome")
+nome = Label(janela2, text="Nome")
 nome.grid(column=0, row=1, padx=10, pady=10)
-nomeentry = tk.Entry(janela)
+nomeentry = Entry(janela2)
 nomeentry.grid(column=0, row=2, padx=10, pady=10)
 
-sobrenome = tk.Label(janela, text="Sobrenome")
+sobrenome = Label(janela2, text="Sobrenome")
 sobrenome.grid(column=1, row=1)
-sobrenomeentry = tk.Entry(janela)
+sobrenomeentry = Entry(janela2)
 sobrenomeentry.grid(column=1, row=2)
 
-idade = tk.Label(janela, text="Idade")
+idade = Label(janela2, text="Idade")
 idade.grid(column=0, row=3, padx=10, pady=10)
-idadeentry = tk.Entry(janela)
+idadeentry = Entry(janela2)
 idadeentry.grid(column=0, row=4, padx=10, pady=10)
 
-genero = tk.Label(janela, text="Gênero")
+genero = Label(janela2, text="Gênero")
 genero.grid(column=1, row=3)
-generoentry = tk.Entry(janela)
+generoentry = Entry(janela2)
 generoentry.grid(column=1, row=4)
 
-endereco = tk.Label(janela, text="Endereço")
+endereco = Label(janela2, text="Endereço")
 endereco.grid(column=0, row=5, padx=10, pady=10)
-enderecoentry = tk.Entry(janela)
+enderecoentry = Entry(janela2)
 enderecoentry.grid(column=0, row=6, padx=10, pady=10)
 
-numero = tk.Label(janela, text="Número")
+numero = Label(janela2, text="Número")
 numero.grid(column=1, row=5)
-numeroentry = tk.Entry(janela)
+numeroentry = Entry(janela2)
 numeroentry.grid(column=1, row=6)
 
-numerotelefone = tk.Label(janela, text="Número de telefone")
+numerotelefone = Label(janela2, text="Número de telefone")
 numerotelefone.grid(column=0, row=7, padx=10, pady=10)
-numerotelefoneentry = tk.Entry(janela)
+numerotelefoneentry = Entry(janela2)
 numerotelefoneentry.grid(column=0, row=8, padx=10, pady=10)
 
-email = tk.Label(janela, text="Endereço de e-mail")
+email = Label(janela2, text="Endereço de e-mail")
 email.grid(column=0, row=9, padx=10, pady=10)
-emailentry = tk.Entry(janela)
+emailentry = Entry(janela2)
 emailentry.grid(column=0, row=10, padx=10, pady=10)
 
-botao = tk.Button(janela, text="Cadastrar", command=cadastrar_cliente)
+botao = Button(janela2, text="Cadastrar", command=cadastrar_cliente)
 botao.grid(column=0, row=11, padx=10, pady=10)
 
 contador_clientes = ler_contador()
 codigos_utilizados = set()
 
-janela.mainloop()
+janela2.mainloop()
