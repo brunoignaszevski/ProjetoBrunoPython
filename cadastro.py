@@ -57,55 +57,60 @@ def cadastrar_cliente():
 
     escrever_contador(contador_clientes)
 
-janela2 = Tk()
-janela2.title("Cadastro de Clientes")
-titulo = Label(janela2, text="Cadastro de Clientes")
+cadastro = Tk()
+cadastro.title("Cadastro de Clientes")
+titulo = Label(cadastro, text="Cadastro de Clientes")
 titulo.grid(column=0, row=0, padx=10, pady=10)
+cadastro.geometry("300x500")
+cadastro.resizable(False, False)
+cadastro.iconbitmap("imagens/icon.ico")
 
-nome = Label(janela2, text="Nome")
+
+
+nome = Label(cadastro, text="Nome")
 nome.grid(column=0, row=1, padx=10, pady=10)
-nomeentry = Entry(janela2)
+nomeentry = Entry(cadastro)
 nomeentry.grid(column=0, row=2, padx=10, pady=10)
 
-sobrenome = Label(janela2, text="Sobrenome")
+sobrenome = Label(cadastro, text="Sobrenome")
 sobrenome.grid(column=1, row=1)
-sobrenomeentry = Entry(janela2)
+sobrenomeentry = Entry(cadastro)
 sobrenomeentry.grid(column=1, row=2)
 
-idade = Label(janela2, text="Idade")
+idade = Label(cadastro, text="Idade")
 idade.grid(column=0, row=3, padx=10, pady=10)
-idadeentry = Entry(janela2)
+idadeentry = Entry(cadastro)
 idadeentry.grid(column=0, row=4, padx=10, pady=10)
 
-genero = Label(janela2, text="Gênero")
+genero = Label(cadastro, text="Gênero")
 genero.grid(column=1, row=3)
-generoentry = Entry(janela2)
+generoentry = Entry(cadastro)
 generoentry.grid(column=1, row=4)
 
-endereco = Label(janela2, text="Endereço")
+endereco = Label(cadastro, text="Endereço")
 endereco.grid(column=0, row=5, padx=10, pady=10)
-enderecoentry = Entry(janela2)
+enderecoentry = Entry(cadastro)
 enderecoentry.grid(column=0, row=6, padx=10, pady=10)
 
-numero = Label(janela2, text="Número")
+numero = Label(cadastro, text="Número")
 numero.grid(column=1, row=5)
-numeroentry = Entry(janela2)
+numeroentry = Entry(cadastro)
 numeroentry.grid(column=1, row=6)
 
-numerotelefone = Label(janela2, text="Número de telefone")
+numerotelefone = Label(cadastro, text="Número de telefone")
 numerotelefone.grid(column=0, row=7, padx=10, pady=10)
-numerotelefoneentry = Entry(janela2)
+numerotelefoneentry = Entry(cadastro)
 numerotelefoneentry.grid(column=0, row=8, padx=10, pady=10)
 
-email = Label(janela2, text="Endereço de e-mail")
+email = Label(cadastro, text="Endereço de e-mail")
 email.grid(column=0, row=9, padx=10, pady=10)
-emailentry = Entry(janela2)
+emailentry = Entry(cadastro)
 emailentry.grid(column=0, row=10, padx=10, pady=10)
 
-botao = Button(janela2, text="Cadastrar", command=cadastrar_cliente)
+botao = Button(cadastro, text="Cadastrar", command=cadastrar_cliente)
 botao.grid(column=0, row=11, padx=10, pady=10)
 
 contador_clientes = ler_contador()
 codigos_utilizados = set()
 
-janela2.mainloop()
+cadastro.mainloop()
