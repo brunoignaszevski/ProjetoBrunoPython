@@ -1,0 +1,40 @@
+Código: 1
+Nome: Bruno
+Sobrenome: Ignaszevski
+Idade: 23
+Gênero: Masculino
+Endereço: Rua
+Número: 1245
+Número de telefone: 191
+Endereço de e-mail: bruno@gmail.com
+
+Código: 2
+Nome: Larissa
+Sobrenome: Worell
+Idade: 24
+Gênero: Feminino
+Endereço: Rua
+Número: 1245
+Número de telefone: 192
+Endereço de e-mail: larissa@gmail.com
+
+Código: 3
+Nome: Roseli
+Sobrenome: Cubas
+Idade: 70
+Gênero: Feminino
+Endereço: Rua
+Número: 1245
+Número de telefone: 193
+Endereço de e-mail: roseli@gmail.com
+
+Código: 4
+Nome: Luiz 
+Sobrenome: Klodzisnki
+Idade: 71
+Gênero: Masculino
+Endereço: Rua
+Número: 1245
+Número de telefone: 194
+Endereço de e-mail: luiz@gmail.com
+
