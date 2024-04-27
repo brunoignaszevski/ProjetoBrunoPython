@@ -1,7 +1,8 @@
 # ProjetoBrunoPython
  Projeto em Python proposto pelo professor Bruno.
 
-desenvolver uma interface com: 
+desenvolver um menu principal com:
+    Login de usuario
     Adicionar cliente
     Editar cliente
     Excluir cliente
