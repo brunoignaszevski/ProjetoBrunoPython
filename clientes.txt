@@ -58,3 +58,43 @@ Número: 1245
 Número de telefone: 47 9 9116-4051
 Endereço de e-mail: lucas@gmail.com
 
+Código: 7
+Nome: 
+Sobrenome: 
+Idade: 
+Gênero: 
+Endereço: 
+Número: 
+Número de telefone: 
+Endereço de e-mail: 
+
+Código: 8
+Nome: 
+Sobrenome: 
+Idade: 
+Gênero: 
+Endereço: 
+Número: 
+Número de telefone: 
+Endereço de e-mail: 
+
+Código: 9
+Nome: 
+Sobrenome: 
+Idade: 
+Gênero: 
+Endereço: 
+Número: 
+Número de telefone: 
+Endereço de e-mail: 
+
+Código: 10
+Nome: 
+Sobrenome: 
+Idade: 
+Gênero: 
+Endereço: 
+Número: 
+Número de telefone: 
+Endereço de e-mail: 
+

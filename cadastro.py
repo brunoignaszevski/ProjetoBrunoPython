@@ -116,8 +116,8 @@ email.grid(column=0, row=9, padx=10, pady=10)
 emailentry = Entry(cadastro)
 emailentry.grid(column=0, row=10, padx=10, pady=10)
 
-cadastrar = Button(cadastro, text="Cadastrar", command=cadastrar_cliente)
-cadastrar.grid(column=0, row=11, padx=10, pady=10)
+cadastrar = Button(cadastro, text="Cadastrar", command=cadastrar_cliente, width=30)
+cadastrar.grid(column=1, row=11, padx=10, pady=10)
 
 contador_clientes = ler_contador()
 codigos_utilizados = set()
