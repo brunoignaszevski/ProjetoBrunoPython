@@ -25,7 +25,7 @@ def cadastrar_cliente():
     global contador_clientes
     nome = nomeentry.get()
     sobrenome = sobrenomeentry.get()
-    idade = idadeentry.get()
+    nascimento = nascimentoentry.get()
     genero = generoentry.get()
     endereco = enderecoentry.get()
     numero = numeroentry.get()
@@ -38,7 +38,7 @@ def cadastrar_cliente():
         file.write(f"Código: {codigo_cliente}\n")
         file.write(f"Nome: {nome}\n")
         file.write(f"Sobrenome: {sobrenome}\n")
-        file.write(f"Idade: {idade}\n")
+        file.write(f"Idade: {nascimento}\n")
         file.write(f"Gênero: {genero}\n")
         file.write(f"Endereço: {endereco}\n")
         file.write(f"Número: {numero}\n")
@@ -48,7 +48,7 @@ def cadastrar_cliente():
 
     nomeentry.delete(0, END)
     sobrenomeentry.delete(0, END)
-    idadeentry.delete(0, END)
+    nascimentoentry.delete(0, END)
     generoentry.delete(0, END)
     enderecoentry.delete(0, END)
     numeroentry.delete(0, END)
@@ -65,7 +65,16 @@ cadastro.geometry("300x500")
 cadastro.resizable(False, False)
 cadastro.iconbitmap("imagens/icon.ico")
 
+largura_janela = 700 
+altura_janela = 500 
 
+largura_tela = cadastro.winfo_screenwidth()
+altura_tela = cadastro.winfo_screenheight()
+
+posx = (largura_tela - largura_janela) // 2
+posy = (altura_tela - altura_janela) // 2
+
+cadastro.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
 
 nome = Label(cadastro, text="Nome")
 nome.grid(column=0, row=1, padx=10, pady=10)
@@ -77,10 +86,10 @@ sobrenome.grid(column=1, row=1)
 sobrenomeentry = Entry(cadastro)
 sobrenomeentry.grid(column=1, row=2)
 
-idade = Label(cadastro, text="Idade")
-idade.grid(column=0, row=3, padx=10, pady=10)
-idadeentry = Entry(cadastro)
-idadeentry.grid(column=0, row=4, padx=10, pady=10)
+nascimento = Label(cadastro, text="Data de nascimento")
+nascimento.grid(column=0, row=3, padx=10, pady=10)
+nascimentoentry = Entry(cadastro)
+nascimentoentry.grid(column=0, row=4, padx=10, pady=10)
 
 genero = Label(cadastro, text="Gênero")
 genero.grid(column=1, row=3)
@@ -107,8 +116,8 @@ email.grid(column=0, row=9, padx=10, pady=10)
 emailentry = Entry(cadastro)
 emailentry.grid(column=0, row=10, padx=10, pady=10)
 
-botao = Button(cadastro, text="Cadastrar", command=cadastrar_cliente)
-botao.grid(column=0, row=11, padx=10, pady=10)
+cadastrar = Button(cadastro, text="Cadastrar", command=cadastrar_cliente)
+cadastrar.grid(column=0, row=11, padx=10, pady=10)
 
 contador_clientes = ler_contador()
 codigos_utilizados = set()

@@ -1,3 +1,4 @@
+"""
 from tkinter import *
 
 teste = Tk()
@@ -10,3 +11,4 @@ btn = Button(teste, text="Executar")
 btn.pack()
 
 teste.mainloop()
+"""
