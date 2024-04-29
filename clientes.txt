@@ -48,3 +48,13 @@ Número: 195
 Número de telefone: 47 9 9116-4051
 Endereço de e-mail: eliane@gmail.com
 
+Código: 6
+Nome: Lucas Alexandre
+Sobrenome: Klodzinski Soares de Souza
+Idade: 11
+Gênero: Masculino
+Endereço: Rua Felipe Schmitd
+Número: 1245
+Número de telefone: 47 9 9116-4051
+Endereço de e-mail: lucas@gmail.com
+
