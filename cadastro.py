@@ -1,5 +1,8 @@
 from tkinter import *
 
+def abrir_cadastro():
+    Toplevel(cadastro)
+
 def ler_contador():
     try:
         with open("contador.txt", "r") as file:

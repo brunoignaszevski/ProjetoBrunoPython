@@ -118,3 +118,13 @@ Número:
 Número de telefone: 
 Endereço de e-mail: 
 
+Código: 13
+Nome: 
+Sobrenome: 
+Idade: 
+Gênero: 
+Endereço: 
+Número: 
+Número de telefone: 
+Endereço de e-mail: 
+
