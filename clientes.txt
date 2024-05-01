@@ -128,3 +128,23 @@ Número:
 Número de telefone: 
 Endereço de e-mail: 
 
+Código: 0
+Nome: g
+Sobrenome: a
+Idade: 1
+Gênero: m
+Endereço: r
+Número: 1245
+Número de telefone: 123
+Endereço de e-mail: g
+
+Código: 0
+Nome: a
+Sobrenome: b
+Idade: 1
+Gênero: 2
+Endereço: f
+Número: 2
+Número de telefone: 4
+Endereço de e-mail: 5
+

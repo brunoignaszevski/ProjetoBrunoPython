@@ -1,34 +1,15 @@
 from tkinter import *
 
+#declaração das variáveis globais
+contador_clientes = 0
+codigos_utilizados = set()
+
 #função que abre a tela de cadastro
 def abrir_tela_cadastro():
     cadastro = Toplevel()
     cadastro.title("Cadastro de Clientes")
 
-    def abrir_cadastro():
-        Toplevel(cadastro)
-#função contador para codificar os clientes
-    def ler_contador():
-        try:
-            with open("contador.txt", "r") as file:
-                return int(file.read())
-        except FileNotFoundError:
-            return 1
-
-    def escrever_contador(valor):
-        with open("contador.txt", "w") as file:
-            file.write(str(valor))
-#função de gerar o código dos clientes
-    def gerar_codigo():
-        global contador_clientes
-        while True:
-            if contador_clientes not in codigos_utilizados:
-                codigo = contador_clientes
-                contador_clientes += 1
-                return codigo
-            else:
-                contador_clientes += 1
-#função de cadastrar os clientes
+    #função de cadastrar os clientes
     def cadastrar_cliente():
         global contador_clientes
         nome = nomeentry.get()
@@ -64,15 +45,35 @@ def abrir_tela_cadastro():
         emailentry.delete(0, END)
 
         escrever_contador(contador_clientes)
-#tela cadastro de clientes
+
+    #função contador para codificar os clientes
+    def ler_contador():
+        try:
+            with open("contador.txt", "r") as file:
+                return int(file.read())
+        except FileNotFoundError:
+            return 1
+
+    def escrever_contador(valor):
+        with open("contador.txt", "w") as file:
+            file.write(str(valor))
+
+    def gerar_codigo():
+        global contador_clientes
+        while True:
+            if contador_clientes not in codigos_utilizados:
+                codigo = contador_clientes
+                contador_clientes += 1
+                return codigo
+            else:
+                contador_clientes += 1
+
+    #tela cadastro de clientes
     titulo = Label(cadastro, text="Cadastro de Clientes")
     titulo.grid(column=0, row=0, padx=10, pady=10)
     cadastro.geometry("300x500")
     cadastro.resizable(False, False)
     cadastro.iconbitmap("imagens/icon.ico")
-
-    contador_clientes = ler_contador()
-    codigos_utilizados = set()
 
     largura_janela = 700 
     altura_janela = 500 
@@ -132,24 +133,25 @@ def abrir_tela_cadastro():
     codigos_utilizados = set()
 
     cadastro.mainloop()
-#tela menu principal 
-menu_principal = Tk()
-menu_principal.title("Sistema Gerenciador de Clientes")
-menu_principal.resizable(False, False)
-menu_principal.iconbitmap("imagens/icon.ico")
+#função que abre a tela menu principal 
+def abrir_tela_principal():
+    menu_principal = Toplevel()
+    menu_principal.title("Sistema Gerenciador de Clientes")
+    menu_principal.resizable(False, False)
+    menu_principal.iconbitmap("imagens/icon.ico")
 
-largura_janela = 700 
-altura_janela = 500 
+    largura_janela = 700 
+    altura_janela = 500 
 
-largura_tela = menu_principal.winfo_screenwidth()
-altura_tela = menu_principal.winfo_screenheight()
+    largura_tela = menu_principal.winfo_screenwidth()
+    altura_tela = menu_principal.winfo_screenheight()
 
-posx = (largura_tela - largura_janela) // 2
-posy = (altura_tela - altura_janela) // 2
+    posx = (largura_tela - largura_janela) // 2
+    posy = (altura_tela - altura_janela) // 2
 
-menu_principal.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+    menu_principal.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
 
-botao_cadastro = Button(menu_principal, text="Cadastro de clientes", command=abrir_tela_cadastro)
-botao_cadastro.pack()
+    botao_cadastro = Button(menu_principal, text="Cadastro de clientes", command=abrir_tela_cadastro)
+    botao_cadastro.pack()
 
-menu_principal.mainloop()
+    menu_principal.mainloop()
