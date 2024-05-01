@@ -51,12 +51,12 @@ def verificar_login():
 
     # Aqui você iria verificar os dados de login em algum lugar seguro, como um banco de dados
     # Por simplicidade, vou usar credenciais fixas neste exemplo
-    email_valido = "usuario@example.com"
-    senha_valida = "senha123"
+    email_valido = "brunohenriquewew@outlook.com"
+    senha_valida = "bh110700"
 
     if email_digitado == email_valido and senha_digitada == senha_valida:
-        messagebox.showinfo("Login", "Login bem-sucedido!")
         # Se o login for bem-sucedido, abra o menu principal
+        login.destroy()
         abrir_menu_principal()
     else:
         messagebox.showerror("Login", "Credenciais inválidas!")
@@ -213,12 +213,13 @@ def abrir_tela_cadastro():
     cadastro.mainloop()
 #função que abre a tela menu principal 
 
-
-
 login = Tk()
 login.title("Login SGDC")
 login.resizable(False, False)
 login.iconbitmap("imagens/icon.ico")
+
+def ocultar_senha(event=None):
+    senhaentry.config(show="*")
 
 largura_janela = 700 
 altura_janela = 500 
@@ -240,6 +241,7 @@ senha = Label(login, text="Sua senha")
 senha.place(relx=0.5, rely=0.5, anchor="center")
 senhaentry = Entry(login, width=40)
 senhaentry.place(relx=0.5, rely=0.55, anchor="center")
+senhaentry.bind("<FocusIn>", ocultar_senha)
 
 manter_logado_var = BooleanVar()
 manter_logado_checkbox = Checkbutton(login, text="Manter Logado", variable=manter_logado_var)
