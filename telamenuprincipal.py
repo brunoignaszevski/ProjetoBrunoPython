@@ -1,5 +1,5 @@
 from tkinter import *
-from cadastro import *
+from telacadastro import *
 
 menu_principal = Tk()
 menu_principal.title("Sistema Gerenciador de Clientes")

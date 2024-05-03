@@ -1,9 +1,86 @@
+"""
 from tkinter import *
 
-#declaração das variáveis globais
+login = Tk()
+login.title("Login SGDC")
+login.resizable(False, False)
+login.iconbitmap("imagens/icon.ico")
+
+largura_janela = 700 
+altura_janela = 500 
+
+largura_tela = login.winfo_screenwidth()
+altura_tela = login.winfo_screenheight()
+
+posx = (largura_tela - largura_janela) // 2
+posy = (altura_tela - altura_janela) // 2
+
+login.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+
+email = Label(login, text="Seu e-mail")
+email.grid(column=1, row=3, padx=10, pady=10)
+emailentry = Entry(login,
+                width=40)
+emailentry.grid(column=1, row=4, padx=10, pady=10)
+
+senha = Label(login, text="Sua senha")
+senha.grid(column=1, row=5, padx=10, pady=10)
+senhaentry = Entry(login,
+                width=40)
+senhaentry.grid(column=1, row=6, padx=10, pady=10)
+
+manter_logado_var = BooleanVar()
+manter_logado_checkbox = Checkbutton(login, text="Manter Logado", variable=manter_logado_var)
+manter_logado_checkbox.grid(column=1, row=7, padx=10, pady=10)
+
+logar = Button(login, text="Logar", command='logar_cliente', width=30)
+logar.grid(column=1, row=8, padx=10, pady=10)
+
+login.mainloop()
+"""
+
+from tkinter import *
+from tkinter import messagebox
 contador_clientes = 0
 codigos_utilizados = set()
 
+def verificar_login():
+    email_digitado = emailentry.get()
+    senha_digitada = senhaentry.get()
+
+    # Aqui você iria verificar os dados de login em algum lugar seguro, como um banco de dados
+    # Por simplicidade, vou usar credenciais fixas neste exemplo
+    email_valido = "brunohenriquewew@outlook.com"
+    senha_valida = "bh110700"
+
+    if email_digitado == email_valido and senha_digitada == senha_valida:
+        # Se o login for bem-sucedido, abra o menu principal
+        login.destroy()
+        abrir_menu_principal()
+    else:
+        messagebox.showerror("Login", "Credenciais inválidas!")
+
+def abrir_menu_principal():
+    menu_principal = Toplevel()
+    menu_principal.title("Sistema Gerenciador de Clientes")
+    menu_principal.resizable(False, False)
+    menu_principal.iconbitmap("imagens/icon.ico")
+
+    largura_janela = 700 
+    altura_janela = 500 
+
+    largura_tela = menu_principal.winfo_screenwidth()
+    altura_tela = menu_principal.winfo_screenheight()
+
+    posx = (largura_tela - largura_janela) // 2
+    posy = (altura_tela - altura_janela) // 2
+
+    menu_principal.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+
+    botao_cadastro = Button(menu_principal, text="Cadastro de clientes", command=abrir_tela_cadastro)
+    botao_cadastro.pack()
+
+    menu_principal.mainloop()
 #função que abre a tela de cadastro
 def abrir_tela_cadastro():
     cadastro = Toplevel()
@@ -134,24 +211,43 @@ def abrir_tela_cadastro():
 
     cadastro.mainloop()
 #função que abre a tela menu principal 
-def abrir_tela_principal():
-    menu_principal = Toplevel()
-    menu_principal.title("Sistema Gerenciador de Clientes")
-    menu_principal.resizable(False, False)
-    menu_principal.iconbitmap("imagens/icon.ico")
 
-    largura_janela = 700 
-    altura_janela = 500 
+login = Tk()
+login.title("Login SGDC")
+login.resizable(False, False)
+login.iconbitmap("imagens/icon.ico")
 
-    largura_tela = menu_principal.winfo_screenwidth()
-    altura_tela = menu_principal.winfo_screenheight()
+def ocultar_senha(event=None):
+    senhaentry.config(show="*")
 
-    posx = (largura_tela - largura_janela) // 2
-    posy = (altura_tela - altura_janela) // 2
+largura_janela = 700 
+altura_janela = 500 
 
-    menu_principal.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+largura_tela = login.winfo_screenwidth()
+altura_tela = login.winfo_screenheight()
 
-    botao_cadastro = Button(menu_principal, text="Cadastro de clientes", command=abrir_tela_cadastro)
-    botao_cadastro.pack()
+posx = (largura_tela - largura_janela) // 2
+posy = (altura_tela - altura_janela) // 2
 
-    menu_principal.mainloop()
+login.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+
+email = Label(login, text="Seu e-mail")
+email.place(relx=0.5, rely=0.4, anchor="center")
+emailentry = Entry(login, width=40)
+emailentry.place(relx=0.5, rely=0.45, anchor="center")
+
+senha = Label(login, text="Sua senha")
+senha.place(relx=0.5, rely=0.5, anchor="center")
+senhaentry = Entry(login, width=40)
+senhaentry.place(relx=0.5, rely=0.55, anchor="center")
+senhaentry.bind("<FocusIn>", ocultar_senha)
+"""
+manter_logado_var = BooleanVar()
+manter_logado_checkbox = Checkbutton(login, text="Manter Logado", variable=manter_logado_var)
+manter_logado_checkbox.place(relx=0.5, rely=0.6, anchor="center")
+"""
+# Botão de login
+logar = Button(login, text="Logar", command=verificar_login, width=30)
+logar.place(relx=0.5, rely=0.65, anchor="center")
+
+login.mainloop()

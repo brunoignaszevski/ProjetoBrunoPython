@@ -1,34 +1,42 @@
+#importações de módulos 
 from tkinter import *
+from tkinter import messagebox
+#zerando contador
+contador_clientes = 0
+codigos_utilizados = set()
 
-#função que abre a tela de cadastro
+def verificar_login():
+    email_digitado = emailentry.get()
+    senha_digitada = senhaentry.get()
+    #verificar os dados de login em algum lugar seguro ex: banco de dados
+    email_valido = "bruno@gmail.com"
+    senha_valida = "123456"
+
+    if email_digitado == email_valido and senha_digitada == senha_valida:
+        login.destroy()
+        abrir_menu_principal()
+    else:
+        messagebox.showerror("Login", "Credenciais inválidas!")
+
+def abrir_menu_principal():
+    menu_principal = Toplevel()
+    menu_principal.title("Sistema Gerenciador de Clientes")
+    menu_principal.resizable(False, False)
+    menu_principal.iconbitmap("imagens/icon.ico")
+    largura_janela = 700 
+    altura_janela = 500 
+    largura_tela = menu_principal.winfo_screenwidth()
+    altura_tela = menu_principal.winfo_screenheight()
+    posx = (largura_tela - largura_janela) // 2
+    posy = (altura_tela - altura_janela) // 2
+    menu_principal.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+    botao_cadastro = Button(menu_principal, text="Cadastro de clientes", command=abrir_tela_cadastro)
+    botao_cadastro.pack()
+
 def abrir_tela_cadastro():
     cadastro = Toplevel()
     cadastro.title("Cadastro de Clientes")
 
-    def abrir_cadastro():
-        Toplevel(cadastro)
-#função contador para codificar os clientes
-    def ler_contador():
-        try:
-            with open("contador.txt", "r") as file:
-                return int(file.read())
-        except FileNotFoundError:
-            return 1
-
-    def escrever_contador(valor):
-        with open("contador.txt", "w") as file:
-            file.write(str(valor))
-#função de gerar o código dos clientes
-    def gerar_codigo():
-        global contador_clientes
-        while True:
-            if contador_clientes not in codigos_utilizados:
-                codigo = contador_clientes
-                contador_clientes += 1
-                return codigo
-            else:
-                contador_clientes += 1
-#função de cadastrar os clientes
     def cadastrar_cliente():
         global contador_clientes
         nome = nomeentry.get()
@@ -62,28 +70,38 @@ def abrir_tela_cadastro():
         numeroentry.delete(0, END)
         numerotelefoneentry.delete(0, END)
         emailentry.delete(0, END)
-
         escrever_contador(contador_clientes)
-#tela cadastro de clientes
-    titulo = Label(cadastro, text="Cadastro de Clientes")
-    titulo.grid(column=0, row=0, padx=10, pady=10)
+
+    def ler_contador():
+        try:
+            with open("contador.txt", "r") as file:
+                return int(file.read())
+        except FileNotFoundError:
+            return 1
+
+    def escrever_contador(valor):
+        with open("contador.txt", "w") as file:
+            file.write(str(valor))
+
+    def gerar_codigo():
+        global contador_clientes
+        codigo = contador_clientes
+        contador_clientes += 1
+        return codigo
+
     cadastro.geometry("300x500")
     cadastro.resizable(False, False)
     cadastro.iconbitmap("imagens/icon.ico")
-
-    contador_clientes = ler_contador()
-    codigos_utilizados = set()
-
     largura_janela = 700 
     altura_janela = 500 
-
     largura_tela = cadastro.winfo_screenwidth()
     altura_tela = cadastro.winfo_screenheight()
-
     posx = (largura_tela - largura_janela) // 2
     posy = (altura_tela - altura_janela) // 2
-
     cadastro.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+
+    titulo = Label(cadastro, text="Cadastro de Clientes")
+    titulo.grid(column=0, row=0, padx=10, pady=10)
 
     nome = Label(cadastro, text="Nome")
     nome.grid(column=0, row=1, padx=10, pady=10)
@@ -129,27 +147,36 @@ def abrir_tela_cadastro():
     cadastrar.grid(column=1, row=11, padx=10, pady=10)
 
     contador_clientes = ler_contador()
-    codigos_utilizados = set()
 
-    cadastro.mainloop()
-#tela menu principal 
-menu_principal = Tk()
-menu_principal.title("Sistema Gerenciador de Clientes")
-menu_principal.resizable(False, False)
-menu_principal.iconbitmap("imagens/icon.ico")
+login = Tk()
+login.title("Login SGDC")
+login.resizable(False, False)
+login.iconbitmap("imagens/icon.ico")
+
+def ocultar_senha(event=None):
+    senhaentry.config(show="*")
 
 largura_janela = 700 
 altura_janela = 500 
-
-largura_tela = menu_principal.winfo_screenwidth()
-altura_tela = menu_principal.winfo_screenheight()
-
+largura_tela = login.winfo_screenwidth()
+altura_tela = login.winfo_screenheight()
 posx = (largura_tela - largura_janela) // 2
 posy = (altura_tela - altura_janela) // 2
+login.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
 
-menu_principal.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+email = Label(login, text="Seu e-mail")
+email.place(relx=0.5, rely=0.4, anchor="center")
+emailentry = Entry(login, width=40)
+emailentry.place(relx=0.5, rely=0.45, anchor="center")
 
-botao_cadastro = Button(menu_principal, text="Cadastro de clientes", command=abrir_tela_cadastro)
-botao_cadastro.pack()
+senha = Label(login, text="Sua senha")
+senha.place(relx=0.5, rely=0.5, anchor="center")
+senhaentry = Entry(login, width=40)
+senhaentry.place(relx=0.5, rely=0.55, anchor="center")
+senhaentry.bind("<FocusIn>", ocultar_senha)
 
-menu_principal.mainloop()
+# Botão de login
+logar = Button(login, text="Logar", command=verificar_login, width=30)
+logar.place(relx=0.5, rely=0.65, anchor="center")
+
+login.mainloop()
