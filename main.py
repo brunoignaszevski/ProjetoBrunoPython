@@ -18,7 +18,7 @@ def verificar_login():
         messagebox.showerror("Login", "Credenciais inválidas!")
 
 def abrir_menu_principal():
-    menu_principal = Toplevel()
+    menu_principal = Tk()
     menu_principal.title("Sistema Gerenciador de Clientes")
     menu_principal.resizable(False, False)
     menu_principal.iconbitmap("imagens/icon.ico")
@@ -33,6 +33,7 @@ def abrir_menu_principal():
     botao_cadastro.pack()
 
 def abrir_tela_cadastro():
+    global contador_clientes
     cadastro = Toplevel()
     cadastro.title("Cadastro de Clientes")
 
