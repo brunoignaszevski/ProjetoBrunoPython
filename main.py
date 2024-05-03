@@ -1,14 +1,13 @@
-#importações de módulos 
+# importações de módulos 
 from tkinter import *
 from tkinter import messagebox
-#zerando contador
+# zerando contador
 contador_clientes = 0
 codigos_utilizados = set()
 
 def verificar_login():
     email_digitado = emailentry.get()
     senha_digitada = senhaentry.get()
-    #verificar os dados de login em algum lugar seguro ex: banco de dados
     email_valido = "bruno@gmail.com"
     senha_valida = "123456"
 
@@ -175,7 +174,6 @@ senhaentry = Entry(login, width=40)
 senhaentry.place(relx=0.5, rely=0.55, anchor="center")
 senhaentry.bind("<FocusIn>", ocultar_senha)
 
-# Botão de login
 logar = Button(login, text="Logar", command=verificar_login, width=30)
 logar.place(relx=0.5, rely=0.65, anchor="center")
 
