@@ -1,6 +1,7 @@
 # importações de módulos 
 from tkinter import *
 from tkinter import messagebox
+
 # zerando contador
 contador_clientes = 0
 codigos_utilizados = set()
