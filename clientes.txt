@@ -1,30 +1,20 @@
-Código: 0
+Cï¿½digo: 0
 Nome: Bruno Henrique
 Sobrenome: Ignaszevski
 Idade: 11/07/2000
-Gênero: Masculino
-Endereço: Rua Felipe Schmitd
-Número: 1245
-Número de telefone: 47 9 9116-4051
-Endereço de e-mail: bruno@gmail.com
+Gï¿½nero: Masculino
+Endereï¿½o: Rua Felipe Schmitd
+Nï¿½mero: 1245
+Nï¿½mero de telefone: 47 9 9116-4051
+Endereï¿½o de e-mail: bruno@gmail.com
 
-Código: 1
+Cï¿½digo: 1
 Nome: Gilson Cesar
 Sobrenome: Carlos Filho
 Idade: 25/03/2003
-Gênero: Masculino
-Endereço: Rua
-Número: 1
-Número de telefone: 123456789
-Endereço de e-mail: gilson@gmail.com
-
-Código: 2
-Nome: Bruno 
-Sobrenome: Resende
-Idade: 17/01/1990
-Gênero: Masculino
-Endereço: Rua
-Número: 1
-Número de telefone: 1
-Endereço de e-mail: bruno@gmail.com
+Gï¿½nero: Masculino
+Endereï¿½o: Rua
+Nï¿½mero: 1
+Nï¿½mero de telefone: 123456789
+Endereï¿½o de e-mail: gilson@gmail.com
 
