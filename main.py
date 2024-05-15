@@ -31,7 +31,14 @@ def abrir_menu_principal():
     posy = (altura_tela - altura_janela) // 2
     menu_principal.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
     botao_cadastro = Button(menu_principal, text="Cadastro de clientes", command=abrir_tela_cadastro)
-    botao_cadastro.pack()
+    botao_cadastro.pack()    
+    botao_cadastro.place(x=0, y=0) 
+    botao_editar = Button(menu_principal, text="Editar clientes")
+    botao_editar.pack()
+    botao_editar.place(x=118, y=0)
+    botao_excluir = Button(menu_principal, text="Excluir clientes")
+    botao_excluir.pack()
+    botao_excluir.place(x=202, y=0)
 
 def abrir_tela_cadastro():
     global contador_clientes
