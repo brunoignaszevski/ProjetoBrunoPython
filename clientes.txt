@@ -1,20 +1,10 @@
-C�digo: 0
+Codigo: 0
 Nome: Bruno Henrique
 Sobrenome: Ignaszevski
 Idade: 11/07/2000
-G�nero: Masculino
-Endere�o: Rua Felipe Schmitd
-N�mero: 1245
-N�mero de telefone: 47 9 9116-4051
-Endere�o de e-mail: bruno@gmail.com
-
-C�digo: 1
-Nome: Gilson Cesar
-Sobrenome: Carlos Filho
-Idade: 25/03/2003
-G�nero: Masculino
-Endere�o: Rua
-N�mero: 1
-N�mero de telefone: 123456789
-Endere�o de e-mail: gilson@gmail.com
+Genero: Masculino
+Endereco: Rua Felipe Schmitd
+Numero: 1245
+Numero de telefone: 047 9 9116-4051
+Endereco de email: bruno@gmail.com
 

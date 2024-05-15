@@ -59,15 +59,15 @@ def abrir_tela_cadastro():
         codigos_utilizados.add(codigo_cliente)
 
         with open("clientes.txt", "a") as file:
-            file.write(f"Código: {codigo_cliente}\n")
+            file.write(f"Codigo: {codigo_cliente}\n")
             file.write(f"Nome: {nome}\n")
             file.write(f"Sobrenome: {sobrenome}\n")
             file.write(f"Idade: {nascimento}\n")
-            file.write(f"Gênero: {genero}\n")
-            file.write(f"Endereço: {endereco}\n")
-            file.write(f"Número: {numero}\n")
-            file.write(f"Número de telefone: {numerotelefone}\n")
-            file.write(f"Endereço de e-mail: {email}\n")
+            file.write(f"Genero: {genero}\n")
+            file.write(f"Endereco: {endereco}\n")
+            file.write(f"Numero: {numero}\n")
+            file.write(f"Numero de telefone: {numerotelefone}\n")
+            file.write(f"Endereco de email: {email}\n")
             file.write("\n") 
 
         nomeentry.delete(0, END)
