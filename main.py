@@ -49,6 +49,41 @@ def abrir_excluir_clientes():
     excluir.iconbitmap("imagens/icon.ico")
     centralizar_janela(excluir, 700, 500)
 
+    # Listbox para selecionar cliente
+    listbox = Listbox(excluir, width=100, height=20)
+    listbox.pack(pady=20)
+    
+    # Carregar dados dos clientes no listbox
+    global clientes
+    clientes = ler_clientes()
+    for idx, cliente in enumerate(clientes):
+        nome = cliente.get("Nome", "")
+        sobrenome = cliente.get("Sobrenome", "")
+        listbox.insert(END, f"{idx + 1}: {nome} {sobrenome}")
+
+    def excluir_cliente():
+        selection = listbox.curselection()
+        if not selection:
+            messagebox.showerror("Erro", "Selecione um cliente para excluir.")
+            return
+        index = selection[0]
+        cliente = clientes[index]
+
+        # Remover o cliente da lista
+        del clientes[index]
+
+        # Atualizar o arquivo de clientes
+        salvar_clientes(clientes)
+
+        # Atualizar a listbox
+        listbox.delete(index)
+
+        messagebox.showinfo("Sucesso", "Cliente excluído com sucesso.")
+
+    # Botão para excluir cliente
+    botao_excluir = Button(excluir, text="Excluir Cliente", command=excluir_cliente)
+    botao_excluir.pack(pady=10)
+
 def abrir_editar_clientes():
     editar = Toplevel()
     editar.title("Editar Clientes")
