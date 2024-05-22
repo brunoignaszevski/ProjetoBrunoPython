@@ -33,12 +33,45 @@ def abrir_menu_principal():
     botao_cadastro = Button(menu_principal, text="Cadastro de clientes", command=abrir_tela_cadastro)
     botao_cadastro.pack()    
     botao_cadastro.place(x=0, y=0) 
-    botao_editar = Button(menu_principal, text="Editar clientes")
+    botao_editar = Button(menu_principal, text="Editar clientes", command=abrir_editar_clientes)
     botao_editar.pack()
     botao_editar.place(x=118, y=0)
-    botao_excluir = Button(menu_principal, text="Excluir clientes")
+    botao_excluir = Button(menu_principal, text="Excluir clientes", command=abrir_excluir_clientes)
     botao_excluir.pack()
     botao_excluir.place(x=202, y=0)
+
+def abrir_excluir_clientes():
+    global contador_clientes
+    excluir = Toplevel()
+    excluir. title("Excluir Clientes")
+
+    excluir.geometry("300x500")
+    excluir.resizable(False, False)
+    excluir.iconbitmap("imagens/icon.ico")
+    largura_janela = 700 
+    altura_janela = 500 
+    largura_tela = excluir.winfo_screenwidth()
+    altura_tela = excluir.winfo_screenheight()
+    posx = (largura_tela - largura_janela) // 2
+    posy = (altura_tela - altura_janela) // 2
+    excluir.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+
+def abrir_editar_clientes():
+    global contador_clientes
+    editar = Toplevel()
+    editar.title("Editar Clientes")
+
+    editar.geometry("300x500")
+    editar.resizable(False, False)
+    editar.iconbitmap("imagens/icon.ico")
+    largura_janela = 700 
+    altura_janela = 500 
+    largura_tela = editar.winfo_screenwidth()
+    altura_tela = editar.winfo_screenheight()
+    posx = (largura_tela - largura_janela) // 2
+    posy = (altura_tela - altura_janela) // 2
+    editar.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
+
 
 def abrir_tela_cadastro():
     global contador_clientes
@@ -107,9 +140,6 @@ def abrir_tela_cadastro():
     posx = (largura_tela - largura_janela) // 2
     posy = (altura_tela - altura_janela) // 2
     cadastro.geometry("%dx%d+%d+%d" % (largura_janela, altura_janela, posx, posy))
-
-    titulo = Label(cadastro, text="Cadastro de Clientes")
-    titulo.grid(column=0, row=0, padx=10, pady=10)
 
     nome = Label(cadastro, text="Nome")
     nome.grid(column=0, row=1, padx=10, pady=10)
