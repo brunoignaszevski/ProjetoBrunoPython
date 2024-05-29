@@ -1,7 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
 
-# Zerando contador
 contador_clientes = 0
 codigos_utilizados = set()
 clientes = []
@@ -49,11 +48,9 @@ def abrir_excluir_clientes():
     excluir.iconbitmap("imagens/icon.ico")
     centralizar_janela(excluir, 700, 500)
 
-    # Listbox para selecionar cliente
     listbox = Listbox(excluir, width=100, height=20)
     listbox.pack(pady=20)
     
-    # Carregar dados dos clientes no listbox
     global clientes
     clientes = ler_clientes()
     for idx, cliente in enumerate(clientes):
@@ -69,18 +66,14 @@ def abrir_excluir_clientes():
         index = selection[0]
         cliente = clientes[index]
 
-        # Remover o cliente da lista
         del clientes[index]
 
-        # Atualizar o arquivo de clientes
         salvar_clientes(clientes)
 
-        # Atualizar a listbox
         listbox.delete(index)
 
         messagebox.showinfo("Sucesso", "Cliente excluído com sucesso.")
 
-    # Botão para excluir cliente
     botao_excluir = Button(excluir, text="Excluir Cliente", command=excluir_cliente)
     botao_excluir.pack(pady=10)
 
@@ -91,11 +84,9 @@ def abrir_editar_clientes():
     editar.iconbitmap("imagens/icon.ico")
     centralizar_janela(editar, 700, 500)
 
-    # Listbox para selecionar cliente
     listbox = Listbox(editar, width=100, height=20)
     listbox.pack(pady=20)
     
-    # Carregar dados dos clientes no listbox
     global clientes
     clientes = ler_clientes()
     for idx, cliente in enumerate(clientes):
