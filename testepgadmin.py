@@ -2,8 +2,6 @@ from tkinter import *
 from tkinter import messagebox
 import psycopg2
 
-contador_clientes = 0
-codigos_utilizados = set()
 clientes = []
 
 def conectar_banco():
@@ -121,12 +119,10 @@ def abrir_editar_clientes():
     botao_carregar.pack(pady=10)
 
 def abrir_tela_cadastro(cliente=None, index=None):
-    global contador_clientes, clientes
     cadastro = Toplevel()
     cadastro.title("Cadastro de Clientes")
     
     def cadastrar_cliente():
-        global contador_clientes, clientes
         nome = nomeentry.get()
         sobrenome = sobrenomeentry.get()
         nascimento = nascimentoentry.get()
@@ -135,10 +131,8 @@ def abrir_tela_cadastro(cliente=None, index=None):
         numero = numeroentry.get()
         numerotelefone = numerotelefoneentry.get()
         email = emailentry.get()
-        codigo_cliente = gerar_codigo() if cliente is None else cliente["Codigo"]
 
         cliente_novo = {
-            "Codigo": codigo_cliente,
             "Nome": nome,
             "Sobrenome": sobrenome,
             "Nascimento": nascimento,
@@ -153,10 +147,9 @@ def abrir_tela_cadastro(cliente=None, index=None):
         cursor = conexao.cursor()
         if cliente is None:
             cursor.execute("""
-                INSERT INTO clientes (codigo, nome, sobrenome, nascimento, genero, endereco, numero, numerotelefone, email)
-                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                INSERT INTO clientes (nome, sobrenome, nascimento, genero, endereco, numero, numerotelefone, email)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """, (
-                codigo_cliente,
                 nome,
                 sobrenome,
                 nascimento,
@@ -181,7 +174,7 @@ def abrir_tela_cadastro(cliente=None, index=None):
                 numero,
                 numerotelefone,
                 email,
-                codigo_cliente
+                cliente["Codigo"]
             ))
             clientes[index] = cliente_novo
         conexao.commit()
@@ -196,24 +189,6 @@ def abrir_tela_cadastro(cliente=None, index=None):
         numeroentry.delete(0, END)
         numerotelefoneentry.delete(0, END)
         emailentry.delete(0, END)
-        escrever_contador(contador_clientes)
-
-    def ler_contador():
-        try:
-            with open("contador.txt", "r") as file:
-                return int(file.read())
-        except FileNotFoundError:
-            return 1
-
-    def escrever_contador(valor):
-        with open("contador.txt", "w") as file:
-            file.write(str(valor))
-
-    def gerar_codigo():
-        global contador_clientes
-        contador_clientes += 1
-        escrever_contador(contador_clientes)
-        return contador_clientes
 
     cadastro.geometry("300x500")
     cadastro.resizable(False, False)
@@ -286,31 +261,6 @@ def ler_clientes():
     cursor.close()
     conexao.close()
     return clientes
-
-def salvar_clientes(lista_de_clientes):
-    conexao = conectar_banco()
-    cursor = conexao.cursor()
-    
-    cursor.execute("DELETE FROM clientes")
-    
-    for cliente in lista_de_clientes:
-        cursor.execute("""
-            INSERT INTO clientes (codigo, nome, sobrenome, nascimento, genero, endereco, numero, numerotelefone, email)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
-        """, (
-            cliente["Codigo"],
-            cliente["Nome"],
-            cliente["Sobrenome"],
-            cliente["Nascimento"],
-            cliente["Genero"],
-            cliente["Endereco"],
-            cliente["Numero"],
-            cliente["NumeroTelefone"],
-            cliente["Email"]
-        ))
-    conexao.commit()
-    cursor.close()
-    conexao.close()
 
 login = Tk()
 login.title("Login SGDC")
